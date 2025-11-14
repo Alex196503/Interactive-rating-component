@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive rating component</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: hsl(216, 12%, 8%);
+            color:white;
+            min-height: 100vh;
+            font-size: 15px;
+            font-family: 'Overpass', sans-serif;
+            line-height: 1.3;
+        }
+        .section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap:25px;
+            padding-bottom: 60px;
+            max-width: 340px;
+            border-radius: 20px 20px;
+            box-shadow: 3px 4px 7px black;
+            height:375px;
+            flex-direction: column;
+            background-color: hsl(213, 19%, 18%);
+            margin:130px auto;
+            position: relative;
+        }
+        img{
+            display: block;
+            object-fit: cover;
+            object-position: center;        
+        }
+        figure{
+            display: block;
+            position: absolute;
+            margin-top: 25px;
+            top:0;
+            left:0;
+            margin-right: auto;
+            margin-left:30px;
+            border-radius: 25px 25px;
+            padding:15px;
+            border: 1px solid hsl(213, 19%, 18%);
+            background-color: hsl(212, 13%, 25%);
+        }
+        .container{
+            margin-top: 120px;
+            display: flex;
+            flex-direction: column;
+            gap:3px;
+            padding:20px;
+        }
+        .container h2{
+            font-size: 1.3em;
+            font-weight: bold;
+            padding:5px;
+            margin-left: 10px;
+        }
+        .container p{
+            font-size:0.9em;
+            line-height: 1.5;
+            margin-left:10px;
+            padding:6px;
+            margin-bottom: 10px;
+            color:hsl(217, 12%, 63%);
+        }
+        .buttons{
+            display: flex;
+            margin-left:20px;
+            flex-direction: row;
+            gap:5px;
+        }
+        input{-webkit-appearance: none;
+            width:40px;
+            height:40px;
+            padding:10px;
+            position: relative;
+            margin-right: 10px;
+            color:white;
+            cursor: pointer;
+            font-size:0.9em;
+            font-weight: bold;
+            border-radius: 25px 25px;
+            box-shadow: 3px 2px 4px  black;
+            background-color: hsl(212, 13%, 25%);
+        }
+        .input1::before{
+            position: absolute;
+            top:11px;
+            margin-left: 6px;
+            content: '1';
+        }
+        .input2::before{
+            position: absolute;
+            top:11px;
+            margin-left: 6px;
+            content: '2';
+        }
+        .input3::before{
+            position: absolute;
+            top:11px;
+            margin-left: 6px;
+            content: '3';
+        }.input4::before{
+            position: absolute;
+            top:11px;
+            margin-left: 6px;
+            content: '4';
+        }.input5::before{
+            position: absolute;
+            top:11px;
+            margin-left: 6px;
+            content: '5';
+        }
+        input:hover{
+            background-color: whitesmoke;
+            color:black;
+            opacity:0.9;
+            transition: background-color 0.5s ease-in-out;
+        }
+        input:checked{
+            background-color:hsl(25, 97%, 53%);
+            color:black;
+            opacity:0.8;
+            transition: background-color 0.4s ease-in;
+        }
+        button{
+            display: block;
+            margin-top: 20px;
+            background-color:hsl(25, 97%, 53%);
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 14px;
+            width:95%;
+            padding:10px ;
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 34px 34px;
+            border: none;
+            color:black;
+        }
+        button:hover{
+            background-color: whitesmoke;
+            color:black;
+            opacity:0.9;
+            transition: background-color 0.3s ease;
+        }
+        @media(max-width:750px)
+       {
+        .section{
+            width:100vw;
+            margin-top: 40px;
+        }
+       }
+       
+    </style>
+</head>
+<body>
+    <section class="section">
+        <figure>
+            <img src="icon-star.svg" alt="Icon with a small star">
+        </figure>
+        <div class="container">
+            <h2>How did we do?</h2>
+            <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+            <form>
+                <div class="buttons">
+                    <input class="input1" type="radio" name="butonase" value="1">
+                    <input class="input2" type="radio" name="butonase" value="2">
+                    <input class="input3" type="radio" name="butonase" value="3">
+                    <input class="input4" type="radio" name="butonase" value="4">
+                    <input class="input5" type="radio" name="butonase" value="5">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+  let form=document.querySelector('form');
+  let inputs=document.querySelectorAll('input');
+  form.addEventListener(('submit'),(e)=>{
+    e.preventDefault();
+    inputs.forEach((input)=>{
+        if(input.checked)
+    {
+        window.location.href=`http://localhost:3000/thankupage.html?rating=${input.value}`;
+    }
+    })
+  })
+</script>
+</html>
