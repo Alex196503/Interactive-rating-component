@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Interactive rating component</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass">
     <style>
@@ -194,7 +194,7 @@
     inputs.forEach((input)=>{
         if(input.checked)
     {
-        window.location.href=`http://localhost:3000/thankupage.html?rating=${input.value}`;
+        window.location.href=`http://localhost:3000/thankupage.html?rating=${input}`;
     }
     })
   })
